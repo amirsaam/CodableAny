@@ -6,9 +6,9 @@
 //
 
 public struct CodableAny: Codable {
-    let value: Any?
+    public let value: Any?
     
-    init<T>(_ value: T?) {
+    public init<T>(_ value: T?) {
         self.value = value
     }
     
@@ -30,7 +30,7 @@ public struct CodableAny: Codable {
             self.value = value
         } else {
             throw DecodingError.dataCorruptedError(in: container,
-                                                   debugDescription: "AnyCodable value cannot be decoded")
+                                                   debugDescription: "CodableAny: Value cannot be Decoded!")
         }
     }
     
@@ -54,7 +54,7 @@ public struct CodableAny: Codable {
         default:
             throw EncodingError.invalidValue(self.value as Any, EncodingError.Context(
                 codingPath: container.codingPath,
-                debugDescription: "AnyCodable value cannot be encoded")
+                debugDescription: "CodableAny: Value cannot be Encoded!")
             )
         }
     }
